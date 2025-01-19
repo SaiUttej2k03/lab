@@ -1,4 +1,4 @@
-p9
+
 #include <stdio.h>
 #include <mpi.h>
 
