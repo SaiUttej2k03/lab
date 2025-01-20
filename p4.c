@@ -1,35 +1,34 @@
-#include <stdio.h>
-#include <omp.h>
-#define MAX_SIZE 100
-int fibonacci[MAX_SIZE];
-
-void generate_fibonacci(int n) {
-    fibonacci[0] = 0;
-    fibonacci[1] = 1;
-
-    #pragma omp parallel for
-    for (int i = 2; i < n; i++) {
-        fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+p4
+#include<stdio.h>
+#include<omp.h>
+#include<stdlib.h>
+int fib[100];
+void gen(int n){
+    fib[0]=0;
+    fib[1]=1;
+    #pragma omp parallel for 
+    for(int i=2;i<n;i++){
+        fib[i]=fib[i-1]+fib[i-2];
     }
 }
-
-void print_fibonacci(int n) {
+void print(int n){
     #pragma omp parallel for
-    for (int i = 0; i < n; i++) {
+    for(int i=0;i<n;i++){
         #pragma omp critical
         {
-            printf("Thread %d: %d\n", omp_get_thread_num(), fibonacci[i]);
+            printf("Thread %d: %d\n",omp_get_thread_num(),fib[i]);
         }
     }
 }
-
-int main() {
-    int n;
-    printf("Enter the number of Fibonacci numbers to generate: ");
-    scanf("%d", &n);
-
-    generate_fibonacci(n);
-    print_fibonacci(n);
-
-    return 0;
+int main(){
+  int n;
+  printf("Enter size:");
+  scanf("%d",&n);
+  #pragma omp parallel sections
+  {
+  #pragma omp section
+  gen(n);
+  #pragma omp section
+  print(n);
+}
 }
