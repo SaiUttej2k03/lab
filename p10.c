@@ -7,9 +7,9 @@ void main() {
         printf("Enter the dimension of square matrices : ");
         scanf("%d", &n);
         int i = 0, j = 0, k = 0;
-        int** arr1 = (int*)malloc(n * sizeof(int));
-        int** arr2 = (int*)malloc(n * sizeof(int));
-        int** res = (int*)malloc(n * sizeof(int));
+        int** arr1 = (int**)malloc(n * sizeof(int*));
+        int** arr2 = (int**)malloc(n * sizeof(int*));
+        int** res = (int**)malloc(n * sizeof(int*));
         omp_set_num_threads(64);
         #pragma omp parallel private(j)
         {
