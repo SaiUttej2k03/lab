@@ -1,4 +1,3 @@
-p4
 #include<stdio.h>
 #include<omp.h>
 #include<stdlib.h>
