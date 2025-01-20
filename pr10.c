@@ -6,9 +6,9 @@ int main(){
  int n;
  printf("Enter size:");
  scanf("%d",&n);
- int** a1=(int*)malloc(n*sizeof(int));
- int** a2=(int*)malloc(n*sizeof(int));
- int** res=(int*)malloc(n*sizeof(int));
+ int** a1=(int**)malloc(n*sizeof(int*));
+ int** a2=(int**)malloc(n*sizeof(int*));
+ int** res=(int**)malloc(n*sizeof(int*));
  for(int i=0;i<n;i++){
      a1[i]=(int*)malloc(n*sizeof(int));
   a2[i]=(int*)malloc(n*sizeof(int));
