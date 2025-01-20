@@ -1,4 +1,3 @@
-p8
 #include <stdio.h>
 #include <mpi.h>
 
